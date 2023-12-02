@@ -1025,7 +1025,7 @@ for(let i=0; i <lines.length; i++) {
       break;
     }
   }
-  for(let l=current_line.length -1; l>= 0; l--) {
+  for(let l=current_line.length -1; l> f; l--) {
     if(!isNaN(current_line[l])) {
       numberInLine += current_line[l];
       break;
