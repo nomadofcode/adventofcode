@@ -1015,6 +1015,8 @@ jmgnfive7ffglffpjlvbtvl935zz
 var lines = txtInput.trim().split('\n');
 
 var sum = 0;
+
+//PART 1
 for(let i=0; i <lines.length; i++) {
   console.log(lines[i]);
   let current_line = lines[i];
@@ -1034,6 +1036,51 @@ for(let i=0; i <lines.length; i++) {
   sum += parseInt(numberInLine);
 }
   
-console.log(sum);
+console.log("Part 1:" + sum);
+
+//part 2
+const hashNumbers = {
+  'one': '1',
+  'two': '2',
+  'three': '3',
+  'four': '4',
+  'five': '5',
+  'six': '6',
+  'seven': '7',
+  'eight': '8',
+  'nine': '9'
+};
+
+const pattern = /(?=(\d|one|two|three|four|five|six|seven|eight|nine))/ig;
+
+for(let i=0; i <lines.length; i++) {
+  console.log(lines[i]);
+  
+  let current_line = lines[i];
+    // Use the regular expression to find all matches in the input string
+  const matches = current_line.matchAll(pattern);
+  let result = Array.from(matches);
+  console.log(result[0][1]);
+
+  let firstDigit;
+  let lastDigit;
+  if(isNaN(result[0][1]))
+    firstDigit = hashNumbers[result[0][1]];
+  else
+    firstDigit = result[0][1];
+
+  if(isNaN(result[result.length - 1][1]))
+    lastDigit = hashNumbers[result[result.length - 1][1]];
+  else
+    lastDigit = result[result.length - 1][1];
+
+  let numberInLine = firstDigit + '' + lastDigit;
+
+  console.log(parseInt(numberInLine));  
+
+  sum += parseInt(numberInLine);
+}
+  
+console.log("Part 2: " + sum); //55291
 
 
